@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class KungfuController {
+public class PageController {
 	private final String PREFIX = "pages/";
 	/**
 	 * 欢迎页

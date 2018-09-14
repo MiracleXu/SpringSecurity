@@ -1,5 +1,6 @@
 package com.dzc.springbootsecurity.conf;
 
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,9 +19,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/level3/**").hasRole("VIP3");
 
         // 开启自动配置的登录功能
-        http.formLogin();
+        http.formLogin().loginPage("/userlogin");
 
 
         http.logout().logoutSuccessUrl("/");
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("dzc").password("123").roles("VIP1", "VIP2")
+                .and()
+                .withUser("zyw").password("123").roles("VIP2", "VIP3");
     }
 }
