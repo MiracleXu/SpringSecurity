@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mapper:
+  mappers:
+  - tk.mybatis.mapper.common.Mapper
+  notEmpty: true
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*
