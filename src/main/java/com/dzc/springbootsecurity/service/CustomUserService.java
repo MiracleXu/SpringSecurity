@@ -39,18 +39,17 @@ public class CustomUserService implements UserDetailsService {
         User user = userMapper.findByUserName(username);
         if (user != null) {
             // 直接从用户的角色关联出来
-            permissionMapper.findByUserId(user.getId());
-            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            user.getRoles().forEach(role ->
-                    authorities.add(new SimpleGrantedAuthority(role.getName()))
-            );
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+//            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+//            user.getRoles().forEach(role ->
+//                    authorities.add(new SimpleGrantedAuthority(role.getName()))
+//            );
+//            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
 
             // 获取用户权限信息
-//            List<Permission> permissions = permissionMapper.findByUserId(user.getId());
-//            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-//            permissions.forEach(p -> grantedAuthorities.add(new SimpleGrantedAuthority(p.getName())));
-//            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+            List<Permission> permissions = permissionMapper.findByUserId(user.getId());
+            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+            permissions.forEach(p -> grantedAuthorities.add(new SimpleGrantedAuthority(p.getName())));
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
         } else {
             throw new UsernameNotFoundException("username not found");
         }

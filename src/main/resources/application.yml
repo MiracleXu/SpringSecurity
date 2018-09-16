@@ -13,3 +13,8 @@ mapper:
 
 mybatis:
   mapper-locations: classpath:mapper/*
+
+logging:
+  level:
+    root: info
+    com.dzc.springbootsecurity.mapper: debug
