@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://10.200.3.180:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
 
 mapper:

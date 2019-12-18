@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center">菜单管理系统</h1>
+<h1 align="center">权限demo</h1>
 
 <div sec:authorize="!isAuthenticated()">
 	<h2 align="center">游客您好，如果想查看菜单 <a th:href="@{/userlogin}">请登录</a></h2>
@@ -26,18 +26,18 @@
 <div sec:authorize="hasRole('VIP1')">
 	<h3>普通菜单</h3>
 	<ul>
-		<li><a th:href="@{/level1/1}">申购</a></li>
-		<li><a th:href="@{/level1/2}">认购</a></li>
-		<li><a th:href="@{/level1/3}">赎回</a></li>
+		<li><a th:href="@{/level1/1}">迪士尼</a></li>
+		<li><a th:href="@{/level1/2}">罗蒙</a></li>
+		<li><a th:href="@{/level1/3}">长城</a></li>
 	</ul>
 </div>
 
 <div sec:authorize="hasRole('VIP2')">
 	<h3>高级菜单</h3>
 	<ul>
-		<li><a th:href="@{/level2/1}">资金红冲</a></li>
-		<li><a th:href="@{/level2/2}">资金蓝补</a></li>
-		<li><a th:href="@{/level2/3}">资金冻结</a></li>
+		<li><a th:href="@{/level2/1}">大陆</a></li>
+		<li><a th:href="@{/level2/2}">港澳台</a></li>
+		<li><a th:href="@{/level2/3}">海外</a></li>
 	</ul>
 </div>
 
